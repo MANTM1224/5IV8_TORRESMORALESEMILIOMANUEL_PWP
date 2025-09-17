@@ -21,7 +21,7 @@ body{
 
 .container-nav {
     background: linear-gradient(135deg, blue 0%, #764ba2 100% );
-    padding: 1rem 0;
+    padding: 16px 0;
     position: sticky;
     top: 0;
     z-index: 100%;
@@ -31,7 +31,7 @@ header nav ul{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 32px;
 }
 
 header nav ul li a {
@@ -57,8 +57,55 @@ header nav ul li a:hover{
 section{
     text-align: center;
     padding: 32px;
-    background: linear-gradient(135deg, pink 0%, red 100% );
+    background: linear-gradient(135deg, pink 0%, red 100%);
     color: white;
     border-radius: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 32px;
+   
+}   
+
+section h1 {
+    font-size: 48px;
+    margin-bottom: 8px;
 }
+section h2{
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+section p {
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto 32px;
+    line-height: 1.8;
+}
+.info-personal{
+    background-color: grey;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.info-personal h3{
+    margin-bottom: 16px;
+    text-align: center;
+
+}
+.info-personal ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 8px;
+}
+.info-personal li{
+    padding: 8px 0;
+}
+article{
+    background-color: white;
+    padding: 32px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px black ;
+    height: fit-content;
+}
+
