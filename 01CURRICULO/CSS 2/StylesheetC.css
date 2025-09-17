@@ -45,3 +45,20 @@ header nav ul li a:hover{
     background-color: whitesmoke;
     transform: translateY(-2px);
 }
+
+.container-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    min-height: 570px;
+}
+
+section{
+    text-align: center;
+    padding: 32px;
+    background: linear-gradient(135deg, pink 0%, red 100% );
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
