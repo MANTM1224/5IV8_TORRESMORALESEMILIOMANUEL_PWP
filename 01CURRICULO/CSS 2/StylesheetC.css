@@ -8,6 +8,40 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: white;
+    background-color: white; 
 }
 
+.container-main {
+    max-width: 1200px;
+    background-color: white;
+    margin: 0 auto;
+    box-shadow: 0 0 20px black;
+    min-height: 100vh;
+}
+
+.container-nav {
+    background: linear-gradient(135deg, blue 0%, #764ba2 100% );
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100%;
+}
+header nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 25px;
+}
+
+header nav ul li a:hover{
+    background-color: whitesmoke;
+    transform: translateY(-2px);
+}
