@@ -80,7 +80,7 @@ section p {
     line-height: 1.8;
 }
 .info-personal{
-    background-color: grey;
+    background-color: pink;
     padding: 12px;
     border-radius: 10px;
     text-align: left;
@@ -108,4 +108,10 @@ article{
     box-shadow: 0 5px 15px black ;
     height: fit-content;
 }
+article h2 {
+    color: blue;
+    margin-bottom: 24px;
+    font-size: 32px;
+}
+
 
