@@ -20,11 +20,11 @@ body{
 }
 
 .container-nav {
-    background: linear-gradient(135deg, blue 0%, #764ba2 100% );
+    background: linear-gradient(135deg,  blue 0%, #764ba2 100% );
     padding: 16px 0;
     position: sticky;
     top: 0;
-    z-index: 100%;
+    z-index: 1000;
 }
 header nav ul{
     list-style: none;
