@@ -113,5 +113,30 @@ article h2 {
     margin-bottom: 24px;
     font-size: 32px;
 }
-
+.d-previos{
+    margin-bottom: 32px;
+    padding: 24px;
+    background-color: white;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+.d-previos h3{
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+.d-previos p{
+    color: #666;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+.d-previos ul{
+    list-style: none;
+    padding-left: 0;
+}
+.d-previos li{
+    padding: 5px 0;
+    position: relative;
+    padding-left: 24px;
+}
 
