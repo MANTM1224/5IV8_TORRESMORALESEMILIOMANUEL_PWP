@@ -216,3 +216,36 @@ aside h2{
     margin-bottom: 16px;
     font-size: 24px;
 }
+.contact-info p {
+    margin-bottom: 24px;
+    opacity: 0.9;
+}
+.btn-contacto{
+    background-color: white;
+    color: black;
+    padding: 10px 32px;
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid #ffff;
+
+}
+.btn-contacto:hover{
+    background-color: white;
+    color: #667eea;
+    transform: translateY(-2px);
+}
+.redes-sociales h3{
+    margin-bottom: 16px;
+}
+.redes-sociales ul{
+    list-style: none;
+}
+.redes-sociales a{
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    
+}
+.redes-sociales a:hover{
+    opacity: 1;
+}
