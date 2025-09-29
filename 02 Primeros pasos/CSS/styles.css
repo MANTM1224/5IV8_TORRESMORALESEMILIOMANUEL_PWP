@@ -43,10 +43,10 @@ nav:hover, section:hover, footer:hover, aside:hover, article:hover{
 }
 
 a{
-    color: #5EEAD4;
+    color: blue ;
     text-decoration: none;
 }
 a:hover{
-    color: #F472B6;
+    color: blue;
     text-decoration: underline;
 }
