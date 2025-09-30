@@ -14,3 +14,16 @@ body{
     margin: 0 auto;
     padding: 40px;
 }
+h1{
+    font-size: 52px;
+    margin-bottom: 12px;
+    color: white;
+    font-weight: 600;
+}
+p{
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: grey;
+    line-height: 1.8;
+    padding: 0 10px;
+}
