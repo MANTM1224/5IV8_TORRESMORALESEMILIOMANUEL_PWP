@@ -20,10 +20,115 @@ h1{
     color: white;
     font-weight: 600;
 }
+
 p{
     font-size: 18px;
     margin-bottom: 24px;
     color: grey;
     line-height: 1.8;
     padding: 0 10px;
+}
+
+li{
+    margin-bottom: 15px;
+}
+
+ol{
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+ol h1 {
+    font-size: 20px; 
+    margin-bottom: 8px;
+    color: white;
+    font-weight: 500;
+}
+
+ul{
+    margin-bottom: 10px;
+    padding-left: 20px;
+    color: grey;
+    font-size: 16px;
+}
+
+.container-form{
+    background: linear-gradient(135deg, black 0%, grey 100%);
+    padding: 40px;
+    border-radius: 15px;
+    margin: 40px 0;
+    border-left: 4px solid grey;
+    box-shadow: 0 4px 15px black ;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+label{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: white;
+    display: block;
+}
+input[type="text"],
+input[type="number"],
+input[type="email"]{
+    padding: 15px 20px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    background-color: grey;
+    color: white;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus{
+    outline: none;
+    border-color: #4a90e2;
+    background-color: grey;
+    box-shadow: 0 0 10px #262626 ;
+}
+input[type="submit"],
+input[type="reset"]{
+    display: inline-block;
+    background-color: blue;
+    color: white;
+    padding: 15 px 30px;
+    border: 2px solid grey;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    margin: 10px 5px;
+    min-width: 180px;
+}
+input[type="submit"]:hover,
+input[type="reset"]:hover{
+    background-color: #357abd;
+    box-shadow: 0 5px 15px #357abd66;
+    border-color: #4a90e2;
+}
+
+input[type="reset"]{
+    background-color: transparent;
+    color: #4a90e2;
+    border: 2px solid #4a90e2;
+}
+
+input[type="reset"]:hover{
+    background-color: #4a90e2;
+    color: white;
+}
+br{
+    margin-bottom: 10px;
 }
