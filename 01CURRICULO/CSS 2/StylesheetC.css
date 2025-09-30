@@ -61,7 +61,7 @@ header nav ul li a:hover{
 }
 
 .container-body {
-    padding: 40px; /
+    padding: 40px; 
     display: grid;
     grid-template-columns: 1.5fr 1fr; 
     gap: 40px; 
