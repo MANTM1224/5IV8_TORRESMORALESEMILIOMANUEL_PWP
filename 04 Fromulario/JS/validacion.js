@@ -10,7 +10,6 @@ const -> variable local, no se puede reasignar ni redeclarar
 
 */
 
-
 function validar(formulario) {
     // Validar que el campo no acepte menos de 3 caracteres
     if (formulario.nombre.value.length < 3) {
