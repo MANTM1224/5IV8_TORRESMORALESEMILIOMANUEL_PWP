@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicios</title>
-    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Ejercicio 1</title>
+    <link rel="stylesheet" href="./CSS/styles.css">
+
 </head>
 <body>
-    
+    <div class="container">
+        <form action="" method="post" name="Formulario">
+            <label for="">Formulario para cálculo de inversiones banco kawaii con un incremento del 8.05% anual</label>
+            <br>
+            <divc class="containe-table">
+                <table class="table">
+                    <tr>
+                        <td>
+                            introduce la cantidad que deseas invertir en todo el año
+                        </td>
+                        <td>
+                            <input type="text" name="cantidad" id="cantidadi" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Calcular interes" name="enviar" onclick="interes()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Su saldo total con el interes es de:</td>
+                        <td>
+                            <input type="text" name="sueldoi" id="saldoi" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Borrar Datos" name="borrar" onclick="borrari()">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+                
+        </form>
+    </div>
+    <script src="./JS/funcionesej1.js"></script>
 </body>
 </html>
