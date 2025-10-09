@@ -1,12 +1,11 @@
 function problema1(){
-
+    //tarea
 }
-//tarea
-function problema2(){
 
+function problema2(){
+    //este es mio
 }
 
 function problema3(){
-
+    //tarea
 }
-//tarea
