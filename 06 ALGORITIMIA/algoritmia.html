@@ -8,9 +8,9 @@
 <body>
     <div class="container">
         <div class="problema-container">
-            <h2 class="problema-titulo">Peroblema 1</h2>
+            <h2 class="problema-titulo">Problema 1</h2>
             <h3>
-                Dada una lisya  de palabras separadas por un espacio, invierte el orden de dichas palabras. las palabras pueden estar separadad
+                Dada una lista de palabras separadas por un espacio, invierte el orden de dichas palabras. las palabras pueden estar separadas
                 unicamente por espacios
             </h3>
             <div class="problema-content">
@@ -31,10 +31,93 @@
                 el producto escalar se forma de la siguiente manera: <em>x1y1 + x2y2 + x3y3 + ... + xNyN</em>
             </h3>
             <div class="problema-content">
+                <div class="tablass" style="width: 100%; display: flex; justify-content: center;">
+                    <table class="problema-table" style="width: 45%;">
+                        <thead>
+                            <tr>
+                            <th><em>X</em></th>
+                            <th>#</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>x1</td>
+                                <td><input type="number" class="problema-input" id="p2-x1" ></td>
+                            </tr>
+                             <tr>
+                                <td>x2</td>
+                                <td><input type="number" class="problema-input" id="p2-x2"></td>
+                            </tr> 
+                            <tr>
+                                <td>x3</td>
+                                <td><input type="number" class="problema-input" id="p2-x3"></td>
+                            </tr> 
+                            <tr>
+                                <td>x4</td>
+                                <td><input type="number" class="problema-input" id="p2-x4"></td>
+                            </tr> 
+                            <tr>
+                                <td>x5</td>
+                                <td><input type="number" class="problema-input" id="p2-x5"></td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                          <table class="problema-table" style="width: 45%;">
+                        <thead>
+                            <tr>
+                            <th><em>Y</em></th>
+                            <th>#</th>
+                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr>
+                                <td>y1</td>
+                                <td><input type="number" class="problema-input" id="p2-y1" ></td>
+                            </tr>
+                             <tr>
+                                <td>y2</td>
+                                <td><input type="number" class="problema-input" id="p2-y2"></td>
+                            </tr> 
+                            <tr>
+                                <td>y3</td>
+                                <td><input type="number" class="problema-input" id="p2-y3"></td>
+                            </tr> 
+                            <tr>
+                                <td>y4</td>
+                                <td><input type="number" class="problema-input" id="p2-y4"></td>
+                            </tr> 
+                            <tr>
+                                <td>y5</td>
+                                <td><input type="number" class="problema-input" id="p2-y5"></td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
                 <input type="text" class="problema-input" id="p1-input" placeholder="Escribe las palabras separadas por un espacio">
                 <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Invertir</button>
-                <pre class="problema-output" id="p1-output"></pre>
+                <pre class="problema-output" id="p2-output"></pre>
             </div>
+        <div class="container">
+        <div class="problema-container">
+            <h2 class="problema-titulo">PProblema 3</h2>
+            <h3>
+                Dada una lista de palabras, encpntrar la que tiene mas caracteres especiales
+            </h3>
+            <br>
+            por ejemplo: CASA = 
+            <br>
+            considera solamente el alfabeto
+            A-Z, en mayusculas las palabras deberan estar separadas por una coma no se admiten espacios
+            <div class="problema-content">
+                <input type="text" class="problema-input" id="p1-input" placeholder="Escribe las palabras separadas por una coma">
+                <button type="button" class="problema-button" style="margin-top: 1rem;" onclick="">Calcular Palabras</button>
+                <pre class="problema-output" id="p1-output">Esperando datos ...</pre>
+            </div>
+        </div>
+    </div>
+
 
         </div>
     </div>
