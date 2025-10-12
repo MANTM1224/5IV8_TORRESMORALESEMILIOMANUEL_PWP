@@ -6,6 +6,84 @@
     <title>EJERCICIO 4</title>
 </head>
 <body>
-    
+    <div class="container">
+        <form action="" method="post" name="Formulario">
+            <label for="">Cálculo de calificación final en Algoritmos</label>
+
+            <br>
+            <div class="containe-table">
+                <table class="table">
+                    <tr>
+                        <td>Introduce la calificación del parcial 1:</td>
+                        <td>
+                            <input type="text" name="parcial1" id="parcial1" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce la calificación del parcial 2:</td>
+                        <td>
+                            <input type="text" name="parcial2" id="parcial2" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce la calificación del parcial 3:</td>
+                        <td>
+                            <input type="text" name="parcial3" id="parcial3" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce la calificación del examen final:</td>
+                        <td>
+                            <input type="text" name="examenfinal" id="examenfinal" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Introduce la calificación del trabajo final:</td>
+                        <td>
+                            <input type="text" name="trabajofinal" id="trabajofinal" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Calcular calificación" name="enviar" onclick="calcularCalificacion()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Promedio de parciales (55%):</td>
+                        <td>
+                            <input type="text" name="promedio" id="promedio" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Examen final (30%):</td>
+                        <td>
+                            <input type="text" name="examen" id="examen" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Trabajo final (15%):</td>
+                        <td>
+                            <input type="text" name="trabajo" id="trabajo" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Calificación final:</td>
+                        <td>
+                            <input type="text" name="calificacionfinal" id="calificacionfinal" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Borrar Datos" name="borrar" onclick="borrarDatos()">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script src="./js/validar.js"></script>
+    <a href="../index.html">volver</a>
 </body>
 </html>
