@@ -4,8 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJERCICIO 3</title>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    
+     <div class="container">
+        <form action="" method="post" name="Formulario">
+            <label for="">Cálculo de descuento en tienda (15% de descuento)</label>
+            <br>
+            <div class="containe-table">
+                <table class="table">
+                    <tr>
+                        <td>Introduce el total de tu compra:</td>
+                        <td>
+                            <input type="text" name="totalcompra" id="totalcompra" onkeypress="return validarn(event)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Calcular descuento" name="enviar" onclick="calcularDescuento()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Descuento aplicado (15%):</td>
+                        <td>
+                            <input type="text" name="descuento" id="descuento" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Total a pagar:</td>
+                        <td>
+                            <input type="text" name="totalpagar" id="totalpagar" readonly="readonly" class="input_text">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Borrar Datos" name="borrar" onclick="borrarDatos()">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+    <script src="./js/validacion.js"></script>
+    <a href="../index.html">Regresar</a>
 </body>
 </html>
