@@ -12,7 +12,7 @@ function problema1(){
 }
 
 function problema2(){
-     var v1 = [
+ var v1 = [
     parseFloat(document.getElementById("p2-x1").value) || 0,
     parseFloat(document.getElementById("p2-x2").value) || 0,
     parseFloat(document.getElementById("p2-x3").value) || 0,
@@ -39,7 +39,7 @@ function problema2(){
 
   document.getElementById("p2-output").textContent = `El producto escalar mínimo es: ${producto}`;
 }
-
+  
 
 function Problema3() {
 
