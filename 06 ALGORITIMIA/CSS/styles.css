@@ -22,6 +22,21 @@ h1{
     font-weight: 600; 
 }  
 
+h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: white;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
 p{     
     font-size: 18px;     
     margin-bottom: 24px;     
@@ -29,6 +44,11 @@ p{
     line-height: 1.8;     
     padding: 0 10px; 
 }  
+
+em {
+    color: #4a90e2;
+    font-style: italic;
+}
 
 li{     
     margin-bottom: 15px; 
@@ -55,15 +75,131 @@ ul{
 
 .container,
 .container-form{     
-    background: linear-gradient(135deg, black 0%, grey 100%);     
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);     
     padding: 40px;     
     border-radius: 15px;     
-    margin: 40px 0;     
-    border-left: 4px solid grey;     
-    box-shadow: 0 4px 15px black;     
-    max-width: 800px;     
-    margin: 40px auto; 
+    margin: 40px auto;     
+    border-left: 4px solid #4a90e2;     
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);     
+    max-width: 900px;
 }  
+
+.problema-container {
+    width: 100%;
+}
+
+.problema-title {
+    color: #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.problema-content {
+    margin-top: 25px;
+}
+
+.problema-input {
+    padding: 15px 20px;     
+    border: 2px solid #444;     
+    border-radius: 8px;     
+    background-color: #2d2d2d;     
+    color: white;     
+    font-size: 16px;     
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;     
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.problema-input:focus {
+    outline: none;     
+    border-color: #4a90e2;     
+    background-color: #333;     
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3); 
+}
+
+.problema-button {
+    display: inline-block;     
+    background-color: #4a90e2;     
+    color: white;     
+    padding: 15px 30px;     
+    border: 2px solid transparent;     
+    border-radius: 8px;     
+    font-size: 16px;     
+    font-weight: 500;     
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;     
+    cursor: pointer;     
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.problema-button:hover {
+    background-color: #357abd;     
+    box-shadow: 0 5px 15px #357abd66;     
+    border-color: #4a90e2;
+}
+
+.problema-output {
+    background-color: #1a1a1a;
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    color: #b0b0b0;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    min-height: 60px;
+}
+
+.problema-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.problema-table thead {
+    background-color: #4a90e2;
+}
+
+.problema-table th {
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.problema-table td {
+    padding: 12px;
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+}
+
+.problema-table tbody tr:hover {
+    background-color: #2d2d2d;
+}
+
+.problema-table input {
+    width: 100%;
+    max-width: 120px;
+    margin: 0 auto;
+}
+
+.tablas {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
 form{     
     display: flex;     
@@ -113,14 +249,15 @@ input[type="text"],
 input[type="number"], 
 input[type="email"]{     
     padding: 15px 20px;     
-    border: 2px solid grey;     
+    border: 2px solid #444;     
     border-radius: 8px;     
-    background-color: grey;     
+    background-color: #2d2d2d;     
     color: white;     
     font-size: 16px;     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;     
     width: 100%;
     max-width: 100%;
+    transition: all 0.3s ease;
 }  
 
 input[type="text"]:focus, 
@@ -128,8 +265,8 @@ input[type="number"]:focus,
 input[type="email"]:focus{     
     outline: none;     
     border-color: #4a90e2;     
-    background-color: grey;     
-    box-shadow: 0 0 10px #262626; 
+    background-color: #333;     
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.3); 
 } 
 
 input[type="submit"], 
@@ -197,6 +334,7 @@ input[readonly] {
     cursor: not-allowed;
     opacity: 0.8;
 }
+
 a{
     display: inline-block;
     background-color: blue;
@@ -207,10 +345,11 @@ a{
     margin: 10px;
     font-weight: 500;
     border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 a:hover{
-background-color: #357abd;
-box-shadow: 0 5px 15px #357abd;
-border-color: #4a90e2;
+    background-color: #357abd;
+    box-shadow: 0 5px 15px #357abd;
+    border-color: #4a90e2;
 }
