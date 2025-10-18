@@ -4,9 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EJERCICIOS 02</title>
-     <link rel="shortcut icon" href="01CURRICULO/img/images.jpg" type="image/x-icon">
+     <link rel="shortcut icon" href="../01CURRICULO/img/images.jpg" type="image/x-icon">
+     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="problema-container">
+            <h2 class="problema-title">Problema 1</h2>
+            <h3>Leer 2 números. Si son iguales multiplicarlos, si el primero es mayor que el segundo restarlos, sino sumarlos.</h3>
+            <div class="problema-content">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label>Primer Número:</label>
+                        <input type="number" class="problema-input" id="p1-num1" placeholder="Ingresa el primer número">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Segundo Número:</label>
+                        <input type="number" class="problema-input" id="p1-num2" placeholder="Ingresa el segundo número">
+                    </div>
+                </div>
+                <button type="button" class="problema-button" onclick="problema1()">Calcular</button>
+                <pre class="problema-output" id="p1-output">Esperando datos...</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="problema-container">
+            <h2 class="problema-title">Problema 2</h2>
+            <h3>Leer tres números diferentes e imprimir el número mayor de los 3.</h3>
+            <div class="problema-content">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label>Primer Número:</label>
+                        <input type="number" class="problema-input" id="p2-num1" placeholder="Número 1">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Segundo Número:</label>
+                        <input type="number" class="problema-input" id="p2-num2" placeholder="Número 2">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Tercer Número:</label>
+                        <input type="number" class="problema-input" id="p2-num3" placeholder="Número 3">
+                    </div>
+                </div>
+                <button type="button" class="problema-button" onclick="problema2()">Encontrar Mayor</button>
+                <pre class="problema-output" id="p2-output">Esperando datos...</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="problema-container">
+            <h2 class="problema-title">Problema 3</h2>
+            <h3>Determinar la cantidad de dinero que recibe un trabajador por concepto de horas extras trabajadas. Las horas normales se pagan según el salario por hora. Cuando las horas de trabajo exceden de 40, el resto se consideran horas extras:<br>
+            • Primeras 8 horas extras: se pagan al doble de una hora normal<br>
+            • Horas extras que exceden de 8: se pagan al triple de una hora normal</h3>
+            <div class="problema-content">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label>Horas Trabajadas:</label>
+                        <input type="number" class="problema-input" id="p3-horas" placeholder="Total de horas">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Salario por Hora ($):</label>
+                        <input type="number" class="problema-input" id="p3-salario" placeholder="Salario/hora">
+                    </div>
+                </div>
+                <button type="button" class="problema-button" onclick="problema3()">Calcular Pago</button>
+                <pre class="problema-output" id="p3-output">Esperando datos...</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="problema-container">
+            <h2 class="problema-title">Problema 4</h2>
+            <h3>Calcular la utilidad que recibe un trabajador por el reparto de utilidades anual. El porcentaje se asigna de acuerdo a su antigüedad en la empresa:<br>
+            • Menos de 1 año: 5%<br>
+            • 1 a 2 años: 7%<br>
+            • 2 a 5 años: 10%<br>
+            • 5 a 10 años: 15%<br>
+            • Más de 10 años: 20%</h3>
+            <div class="problema-content">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <label>Salario Mensual ($):</label>
+                        <input type="number" class="problema-input" id="p4-salario" placeholder="Salario mensual">
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Años de Antigüedad:</label>
+                        <input type="number" class="problema-input" id="p4-antiguedad" placeholder="Años en la empresa">
+                    </div>
+                </div>
+                <button type="button" class="problema-button" onclick="problema4()">Calcular Utilidad</button>
+                <pre class="problema-output" id="p4-output">Esperando datos...</pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="../index.html" class="back-link">← REGRESAR</a>
+    </div>
 </body>
 </html>
