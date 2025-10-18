@@ -12,8 +12,34 @@ function problema1(){
 }
 
 function problema2(){
-    //este es mio
+     var v1 = [
+    parseFloat(document.getElementById("p2-x1").value) || 0,
+    parseFloat(document.getElementById("p2-x2").value) || 0,
+    parseFloat(document.getElementById("p2-x3").value) || 0,
+    parseFloat(document.getElementById("p2-x4").value) || 0,
+    parseFloat(document.getElementById("p2-x5").value) || 0
+  ];
+
+  var v2 = [
+    parseFloat(document.getElementById("p2-y1").value) || 0,
+    parseFloat(document.getElementById("p2-y2").value) || 0,
+    parseFloat(document.getElementById("p2-y3").value) || 0,
+    parseFloat(document.getElementById("p2-y4").value) || 0,
+    parseFloat(document.getElementById("p2-y5").value) || 0
+  ];
+
+
+  v1.sort((a, b) => a - b);
+  v2.sort((a, b) => b - a);
+
+  var producto = 0;
+  for (var i = 0; i < v1.length; i++) {
+    producto += v1[i] * v2[i];
+  }
+
+  document.getElementById("p2-output").textContent = `El producto escalar mínimo es: ${producto}`;
 }
+
 
 function Problema3() {
 
