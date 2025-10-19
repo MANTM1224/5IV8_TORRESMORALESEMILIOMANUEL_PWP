@@ -108,5 +108,48 @@ function problema3() {
 
 
 function problema4() {
-  
+    var salarioMensual  = parseFloat(document.getElementById('p4-salario').value);
+    var antiguedad =parseFloat( document.getElementById('p4-antiguedad').value);
+    var outputElement = document.getElementById('p4-output');
+
+    if (isNaN(salarioMensual) || isNaN(antiguedad) || salarioMensual < 0 || antiguedad < 0) {
+        outputElement.textContent = 'Por favor, ingrese valores válidos (números positivos)';
+        return;
+    }
+
+    var porcentaje = 0;
+    if (antiguedad < 1) {
+        porcentaje = 5;
+        rangoAntiguedad = "Menos de 1 año";
+    } else if ( antiguedad < 2 ) {
+        porcentaje = 7;
+        rangoAntiguedad = "1 año a 2 años";
+    }
+    else if ( antiguedad < 5 ) {
+        porcentaje = 10;
+        rangoAntiguedad = "2 años a 5 años";
+    } else if ( antiguedad < 10 ) {
+        porcentaje = 15;
+        rangoAntiguedad = "5 años a 10 años";
+    } else {
+        porcentaje = 20;
+        rangoAntiguedad = "10 años o más";
+    }
+
+    var utilidad = (salarioMensual * porcentaje) / 100;
+
+    var resultado = `CÁLCULO DE UTILIDAD ANUAL\n`;
+    resultado += `${'='.repeat(50)}\n\n`;
+    resultado += `Salario mensual: $${salarioMensual.toFixed(2)}\n`;
+    resultado += `Antigüedad: ${antiguedad} año${antiguedad !== 1 ? 's' : ''}\n`;
+    resultado += `Rango: ${rangoAntiguedad}\n\n`;
+    resultado += `CÁLCULO:\n`;
+    resultado += `-`.repeat(50) + `\n`;
+    resultado += `Porcentaje asignado: ${porcentaje}%\n`;
+    resultado += `Utilidad = $${salarioMensual.toFixed(2)} × ${porcentaje}%\n`;
+    resultado += `\n${'='.repeat(50)}\n`;
+    resultado += `UTILIDAD A RECIBIR: $${utilidad.toFixed(2)}`;
+    
+    outputElement.textContent = resultado;
+
 }
