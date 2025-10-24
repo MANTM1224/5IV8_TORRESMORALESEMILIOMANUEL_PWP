@@ -1,0 +1,15 @@
+{
+  "name": "09-node",
+  "version": "1.0.0",
+  "description": "Ejemplo de node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mantm1224",
+  "license": "ISC",
+  "dependencies": {
+    "boostrap": "^2.0.0",
+    "express": "^5.1.0"
+  }
+}
