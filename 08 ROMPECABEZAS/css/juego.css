@@ -21,14 +21,14 @@ li {
 
 li::before {
     content: "• ";
-    color: #EC6778;
+    color: #ffffff;
 }
 
 .col-40 h1 {
     margin: 0% auto;
     text-align: center;
     font-size: 27px;
-    color: #E84A5F;
+    color: #ffffff;
 }
 
 .col-40,
@@ -43,7 +43,7 @@ li::before {
     max-width: 376px;
     /* background: #FFF; */
     padding: 30px;
-    color: #000;
+    color: #ffffff;
 }
 
 .col-60 {
