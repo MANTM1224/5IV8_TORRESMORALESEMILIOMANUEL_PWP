@@ -1,6 +1,6 @@
 var instrucciones = [
-    "Utiliza las flechas de navegación para mover las piezas jeje",
-    "Para ordenar las piezas guiate por la imagen objetivo"
+    "Utiliza las flechas de navegación para mover las piezas",
+    "Para ordenar las piezas guíate por la imagen objetivo"
 ];
 
 //vamos a guardar dentro de una variable los movimeintos del rompecabezas
@@ -35,7 +35,7 @@ function mostrarInstrucciones(instrucciones){
 
 //esta funcion se encarga de crear el componente li y agregar la lista de dichas instrucciones
 
-function mostrarInstruccionesLista(instruccion, idLista){
+function mostrarInstruccionesLista(instruccion, idLista) {
     var ul = document.getElementById(idLista);
     var li = document.createElement("li");
     li.textContent = instruccion;
@@ -71,14 +71,14 @@ function mostrarCartelGanador(){
 */
 
 function intercambiarPosicionesRompe(filaPos1, columnaPos1, filaPos2, columnaPos2){
-    var pos1 = rompe[filaPos1,columnaPos1];
-    var pos2 = rompe[filaPos2, columnaPos2];
+    var pos1 = rompe[filaPos1][columnaPos1];
+    var pos2 = rompe[filaPos2][columnaPos2];
 
     //intercambio
 
-    rompe[filaPos1, columnaPos1] = pos2;
-    rompe[filaPos2, columnaPos2] = pos1;
-}    
+    rompe[filaPos1][columnaPos1] = pos2;
+    rompe[filaPos2][columnaPos2] = pos1;
+}
 
 //crear una funcion que se encargue de saber donde esta la pieza vacia
 function actualizarPosicionVacia(nuevaFila, nuevaColumna){
@@ -98,7 +98,7 @@ function posicionValida(fila, columna){
 
 
 var codigosDireccion = {
-        /*CLAVE*/IZQUIERDA : 37/*VALOR*/ ,
+    /*CLAVE*/IZQUIERDA : 37/*VALOR*/ ,
     ARRIBA : 38,
     DERECHA : 39,
     ABAJO : 40
@@ -134,13 +134,13 @@ function moverEnDireccion(direccion){
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         //tengo que guardar el ultimo movimiento porque lo tewngo que mostrar
 
-        agregarUltimoMovimiento(direccion);
+        actualizarUltimoMovimiento(direccion);
     }
 }
 
 function intercambiarPosiciones(fila1, columna1, fila2, columna2){
-    var pieza1 = rompe[fila1,columna1];
-    var pieza2 = rompe[fila2, columna2];
+    var pieza1 = rompe[fila1][columna1];
+    var pieza2 = rompe[fila2][columna2];
 
     //intercambio ya debe de ser por parte de los frames y el html
 
@@ -154,21 +154,22 @@ function intercambiarPosicionesDOM(idPieza1, idPieza2){
     var pieza2 = document.getElementById(idPieza2);
 
     //vamos a clonarlas
-    var padre = elementoPieza1.parentNode;
+    var padre = pieza1.parentNode;
+    var padre2 = pieza2.parentNode;
 
     //lo clono
 
-    var clonElemento1 = elementoPieza1.cloneNode(true);
-    var clonElemento2 = elementoPieza2.cloneNode(true);
+    var clonElemento1 = pieza1.cloneNode(true);
+    var clonElemento2 = pieza2.cloneNode(true);
 
     //reemplazar a los padres con sus clones
 
-    padre.replaceChild(clonElemento1, elementoPieza2);
-    padre.replaceChild(clonElemento2, elementoPieza1);
+    padre.replaceChild(clonElemento1, pieza2);
+    padre2.replaceChild(clonElemento2, pieza1);
 }
 
 //debo de actualizar los movs en el DOM tmb
-function actualizarUltimoMovimeinto(direccion){
+function actualizarUltimoMovimiento(direccion){
     var ultimoMovimiento = document.getElementById("flecha");
     switch(direccion){
         case codigosDireccion.ARRIBA:
@@ -188,7 +189,7 @@ function actualizarUltimoMovimeinto(direccion){
 
 //necesitamos poder mezclar todas las piezas
 
-function mezclarPiezas(){
+function mezclarPiezas(veces) {
     if(veces <= 0){
         alert("Asi no se puede");
         return;
@@ -227,13 +228,19 @@ function capturarTeclas(){
 }
 
 function iniciar(){
-    //mezclar las piezas
+    // Primero mostrar instrucciones
+    mostrarInstrucciones(instrucciones);
+    // Luego mezclar las piezas
     mezclarPiezas(30);
+    // Finalmente capturar teclas
     capturarTeclas();
-    //capturar el ultimo movimiento
 }
 
-//mandamos traer a la funcion
+function reiniciar(){
+    // Mezclar las piezas nuevamente
+    mezclarPiezas(30);
+    //Capturar teclas
+    capturarTeclas();
+}
 
-mostrarInstrucciones(instrucciones);
-
+iniciar();
