@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Stephen King</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <a href="../index.html" class="btn-home">Volver al Inicio</a>
+    <header>
+        <h1> Biblioteca Stephen King</h1>
+        <div class="filtros">
+            <input type="text" id="bookName" placeholder="Buscar libros...">
+            <select id="selectOrder">
+                <option value="">Ordenar por...</option>
+                <option value="año-asc">Año (más antiguo)</option>
+                <option value="año-desc">Año (más reciente)</option>
+                <option value="titulo">Título (A-Z)</option>
+            </select>
+            <button class="btn" id="btnSearch"> Buscar</button>
+            <button class="btn" id="btnReset"> Mostrar Todos</button>
+        </div>
+    </header>
+
+    <div id="loading-container"></div>
+    <div id="galeria" class="galeria"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="./js/srcpt.js"></script>
+</body>
+</html>
