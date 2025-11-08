@@ -9,6 +9,28 @@ body {
     box-sizing: border-box;
 }
 
+.btn-volver {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    border: 2px solid #444;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-volver:hover {
+    background-color: #555;
+    border-color: #666;
+    box-shadow: 0 5px 15px rgba(85,85,85,0.5);
+    transform: translateY(-2px);
+}
+
 ul {
     padding-left: 0;
     list-style: none;
