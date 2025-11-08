@@ -27,21 +27,18 @@ img{
 
 a{
     display: inline-block;
-    background-color: #333;
+    background-color: blue;
     color: white;
     padding: 12px 25px;
     text-decoration: none;
     border-radius: 8px;
-    margin: 20px 0;
+    margin: 10px;
     font-weight: 500;
-    border: 2px solid #444;
-    transition: all 0.3s ease;
-    font-size: 16px;
+    border: 2px solid transparent;
 }
 
 a:hover{
-    background-color: #555;
-    border-color: #666;
-    box-shadow: 0 5px 15px rgba(85,85,85,0.5);
-    transform: translateY(-2px);
+background-color: #357abd;
+box-shadow: 0 5px 15px #357abd;
+border-color: #4a90e2;
 }
