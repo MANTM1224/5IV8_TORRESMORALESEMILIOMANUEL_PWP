@@ -16,7 +16,7 @@ function memo(a, b) {
 
 let suma = memo();
 
-console.log(suma(10,4));
+console.log(suma(10,4));    
 console.log(suma(10,4)); 
 console.log(suma(5,3));
 console.log(suma(5,3)); 
