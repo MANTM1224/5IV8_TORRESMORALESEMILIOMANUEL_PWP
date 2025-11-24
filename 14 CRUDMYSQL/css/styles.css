@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    font-size: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+h1{
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
+
+form{
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    border: 2px solid #333;
+}
+
+label{
+    display: block;
+    color: #b0b0b0;
+    font-size: 18px;
+    margin-bottom: 8px;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="number"]{
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus{
+    outline: none;
+    border-color: #4a90e2;
+    background-color: #333;
+}
+
+button[type="submit"]{
+    width: 100%;
+    padding: 15px;
+    background-color: #4a90e2;
+    color: white;
+    border: 2px solid #357abd;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover{
+    background-color: #357abd;
+    border-color: #2868a8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(74,144,226,0.5);
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+li{
+    background-color: #1a1a1a;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #4a90e2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+li:hover{
+    background-color: #2a2a2a;
+    transform: translateX(5px);
+}
+
+li strong{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+a{
+    display: inline-block;
+    padding: 8px 16px;
+    margin-left: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+a[href*="edit"]{
+    background-color: #333;
+    color: white;
+    border: 2px solid #444;
+}
+
+a[href*="edit"]:hover{
+    background-color: #555;
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+a[href*="delete"]{
+    background-color: #dc3545;
+    color: white;
+    border: 2px solid #bd2130;
+}
+
+a[href*="delete"]:hover{
+    background-color: #c82333;
+    border-color: #a71d2a;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220,53,69,0.5);
+}
