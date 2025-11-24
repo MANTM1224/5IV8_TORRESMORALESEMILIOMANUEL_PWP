@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Inspección - CECyT 9</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Inspección #<%= inspeccion.id %></h1>
+        
+        <div class="form-container">
+            <form action="/inspecciones/update/<%= inspeccion.id %>" method="POST">
+                <div class="form-group">
+                    <label for="fecha_hora">Fecha y Hora:</label>
+                    <input type="datetime-local" id="fecha_hora" name="fecha_hora" 
+                           value="<%= new Date(inspeccion.fecha_hora).toISOString().slice(0, 16) %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="area_sector">Área/Sector:</label>
+                    <select id="area_sector" name="area_sector" required>
+                        <option value="Laboratorio de Química" <%= inspeccion.area_sector === 'Laboratorio de Química' ? 'selected' : '' %>>Laboratorio de Química</option>
+                        <option value="Laboratorio de Física" <%= inspeccion.area_sector === 'Laboratorio de Física' ? 'selected' : '' %>>Laboratorio de Física</option>
+                        <option value="Laboratorio de Electrónica" <%= inspeccion.area_sector === 'Laboratorio de Electrónica' ? 'selected' : '' %>>Laboratorio de Electrónica</option>
+                        <option value="Taller de Mecatrónica" <%= inspeccion.area_sector === 'Taller de Mecatrónica' ? 'selected' : '' %>>Taller de Mecatrónica</option>
+                        <option value="Taller de Manufactura" <%= inspeccion.area_sector === 'Taller de Manufactura' ? 'selected' : '' %>>Taller de Manufactura</option>
+                        <option value="Aula de Computación" <%= inspeccion.area_sector === 'Aula de Computación' ? 'selected' : '' %>>Aula de Computación</option>
+                        <option value="Sala de Servidores" <%= inspeccion.area_sector === 'Sala de Servidores' ? 'selected' : '' %>>Sala de Servidores</option>
+                        <option value="Biblioteca Técnica" <%= inspeccion.area_sector === 'Biblioteca Técnica' ? 'selected' : '' %>>Biblioteca Técnica</option>
+                        <option value="Cafetería Escolar" <%= inspeccion.area_sector === 'Cafetería Escolar' ? 'selected' : '' %>>Cafetería Escolar</option>
+                        <option value="Gimnasio" <%= inspeccion.area_sector === 'Gimnasio' ? 'selected' : '' %>>Gimnasio</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="punto_control">Punto de Control:</label>
+                    <input type="text" id="punto_control" name="punto_control" 
+                           value="<%= inspeccion.punto_control %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="OK" <%= inspeccion.estado === 'OK' ? 'selected' : '' %>>OK</option>
+                        <option value="Fallo" <%= inspeccion.estado === 'Fallo' ? 'selected' : '' %>>Fallo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones" rows="3"><%= inspeccion.observaciones || '' %></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="seguimiento_requerido">¿Seguimiento Requerido?:</label>
+                    <select id="seguimiento_requerido" name="seguimiento_requerido" required>
+                        <option value="No" <%= inspeccion.seguimiento_requerido === 'No' ? 'selected' : '' %>>No</option>
+                        <option value="Sí" <%= inspeccion.seguimiento_requerido === 'Sí' ? 'selected' : '' %>>Sí</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspector">Inspector:</label>
+                    <input type="text" id="inspector" name="inspector" 
+                           value="<%= inspeccion.inspector %>" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Actualizar Datos</button>
+                    <a href="/" class="btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

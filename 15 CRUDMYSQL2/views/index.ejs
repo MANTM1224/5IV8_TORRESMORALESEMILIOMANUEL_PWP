@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora de Inspecciones - CECyT 9</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Bitácora de Inspecciones Diarias - CECyT 9</h1>
+        
+        <div class="form-container">
+            <h2>Registrar Nueva Inspección</h2>
+            <form action="/inspecciones" method="POST">
+                <div class="form-group">
+                    <label for="fecha_hora">Fecha y Hora:</label>
+                    <input type="datetime-local" id="fecha_hora" name="fecha_hora" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="area_sector">Área/Sector:</label>
+                    <select id="area_sector" name="area_sector" required>
+                        <option value="">Selecciona un área</option>
+                        <option value="Laboratorio de Química">Laboratorio de Química</option>
+                        <option value="Laboratorio de Física">Laboratorio de Física</option>
+                        <option value="Laboratorio de Electrónica">Laboratorio de Electrónica</option>
+                        <option value="Taller de Mecatrónica">Taller de Mecatrónica</option>
+                        <option value="Aula de Computación">Aula de Computación</option>
+                        <option value="Biblioteca">Biblioteca</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="punto_control">Punto de Control:</label>
+                    <input type="text" id="punto_control" name="punto_control" placeholder="Ej: Revisión de extractores de aire" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado" required>
+                        <option value="">Selecciona estado</option>
+                        <option value="OK"> OK</option>
+                        <option value="Fallo"> Fallo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" name="observaciones" rows="3" placeholder="Descripción detallada..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="seguimiento_requerido">¿Seguimiento Requerido?:</label>
+                    <select id="seguimiento_requerido" name="seguimiento_requerido" required>
+                        <option value="No">No</option>
+                        <option value="Sí">Sí</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspector">Inspector:</label>
+                    <input type="text" id="inspector" name="inspector" placeholder="Nombre del inspector" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Inspección</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2>Historial de Inspecciones</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha y Hora</th>
+                        <th>Área</th>
+                        <th>Punto de Control</th>
+                        <th>Estado</th>
+                        <th>Observaciones</th>
+                        <th>Seguimiento</th>
+                        <th>Inspector</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (inspecciones.length > 0) { %>
+                        <% inspecciones.forEach(function(inspeccion) { %>
+                            <tr class="<%= inspeccion.estado === 'Fallo' ? 'fallo' : 'ok' %>">
+                                <td><%= inspeccion.id %></td>
+                                <td><%= new Date(inspeccion.fecha_hora).toLocaleString('es-MX') %></td>
+                                <td><%= inspeccion.area_sector %></td>
+                                <td><%= inspeccion.punto_control %></td>
+                                <td>
+                                    <span class="badge <%= inspeccion.estado === 'OK' ? 'badge-ok' : 'badge-fallo' %>">
+                                        <%= inspeccion.estado %>
+                                    </span>
+                                </td>
+                                <td class="observaciones"><%= inspeccion.observaciones || 'N/A' %></td>
+                                <td>
+                                    <span class="badge <%= inspeccion.seguimiento_requerido === 'Sí' ? 'badge-si' : 'badge-no' %>">
+                                        <%= inspeccion.seguimiento_requerido %>
+                                    </span>
+                                </td>
+                                <td><%= inspeccion.inspector %></td>
+                                <td class="actions">
+                                    <a href="/inspecciones/edit/<%= inspeccion.id %>" class="btn-edit"> Editar</a>
+                                    <a href="/inspecciones/delete/<%= inspeccion.id %>" class="btn-delete" onclick="return confirm('¿Eliminar esta inspección?')"> Eliminar</a>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="9" class="no-data">No hay inspecciones registradas</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
