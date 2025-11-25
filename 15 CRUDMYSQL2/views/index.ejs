@@ -5,8 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitácora de Inspecciones - CECyT 9</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #dc3545;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            font-size: 14px;
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <% if (error) { %>
+        <div class="alert" id="errorAlert">
+            ⚠️ <%= error %>
+        </div>
+        <script>
+            setTimeout(function() {
+                const alert = document.getElementById('errorAlert');
+                if (alert) {
+                    alert.style.opacity = '0';
+                    alert.style.transition = 'opacity 0.3s';
+                    setTimeout(() => alert.remove(), 300);
+                }
+            }, 5000);
+        </script>
+    <% } %>
+    
     <div class="container">
         <h1> Bitácora de Inspecciones Diarias - CECyT 9</h1>
         
@@ -105,7 +148,7 @@
                                 <td><%= inspeccion.inspector %></td>
                                 <td class="actions">
                                     <a href="/inspecciones/edit/<%= inspeccion.id %>" class="btn-edit"> Editar</a>
-                                    <a href="/inspecciones/delete/<%= inspeccion.id %>" class="btn-delete" onclick="return confirm('¿Eliminar esta inspección?')"> Eliminar</a>
+                                    <a href="/inspecciones/delete/<%= inspeccion.id %>" class="btn-delete"> Eliminar</a>
                                 </td>
                             </tr>
                         <% }); %>
