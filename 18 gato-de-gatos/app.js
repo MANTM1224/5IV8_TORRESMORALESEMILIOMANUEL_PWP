@@ -24,7 +24,7 @@ bd.connect((error) => {
         console.log('Error de conexión a la base de datos: ' + error);
         console.log('Asegúrate de ejecutar el script database.sql primero');
     } else {
-        console.log('✅ Conexión exitosa a la base de datos');
+        console.log('Conexión exitosa a la base de datos');
     }
 });
 
@@ -193,5 +193,5 @@ app.get('/historial', (req, res) => {
 
 // Iniciar servidor
 app.listen(port, () => {
-    console.log(`🎮 Gato de Gatos corriendo en http://localhost:${port}`);
+    console.log(`Gato de Gatos corriendo en http://localhost:${port}`);
 });

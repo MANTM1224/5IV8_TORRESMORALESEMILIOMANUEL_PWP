@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container historial-container">
-        <h1>🐱 Gato de Gatos 🐱</h1>
-        <h2>📊 Historial de Puntuaciones</h2>
+        <h1>Gato de Gatos</h1>
+        <h2>Historial de Puntuaciones</h2>
         
-        <a href="/" class="btn-volver">🏠 Volver al Inicio</a>
+        <a href="/" class="btn-volver">Volver al Inicio</a>
 
         <!-- Tabla de Rankings -->
         <div class="seccion">
-            <h3>🏆 Ranking de Jugadores</h3>
+            <h3>Ranking de Jugadores</h3>
             <% if (jugadores.length === 0) { %>
                 <p class="sin-datos">No hay jugadores registrados aún.</p>
             <% } else { %>
@@ -38,9 +38,9 @@
                                     const totalPartidas = jugador.victorias + jugador.derrotas + jugador.empates;
                                     const porcentaje = totalPartidas > 0 ? ((jugador.victorias / totalPartidas) * 100).toFixed(1) : 0;
                                     let medalla = '';
-                                    if (index === 0) medalla = '🥇';
-                                    else if (index === 1) medalla = '🥈';
-                                    else if (index === 2) medalla = '🥉';
+                                    if (index === 0) medalla = '1';
+                                    else if (index === 1) medalla = '2';
+                                    else if (index === 2) medalla = '3';
                                 %>
                                 <tr class="<%= index < 3 ? 'top-' + (index + 1) : '' %>">
                                     <td><%= medalla %> <%= index + 1 %></td>
@@ -60,7 +60,7 @@
 
         <!-- Historial de Partidas -->
         <div class="seccion">
-            <h3>📜 Últimas Partidas</h3>
+            <h3>Últimas Partidas</h3>
             <% if (partidas.length === 0) { %>
                 <p class="sin-datos">No hay partidas registradas aún.</p>
             <% } else { %>
@@ -80,9 +80,9 @@
                             </div>
                             <div class="partida-resultado">
                                 <% if (partida.empate) { %>
-                                    <span class="resultado empate">🤝 Empate</span>
+                                    <span class="resultado empate">Empate</span>
                                 <% } else { %>
-                                    <span class="resultado victoria">🏆 <%= partida.ganador_nombre %></span>
+                                    <span class="resultado victoria"><%= partida.ganador_nombre %></span>
                                 <% } %>
                             </div>
                             <div class="partida-fecha">

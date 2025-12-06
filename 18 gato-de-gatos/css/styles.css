@@ -6,25 +6,25 @@
 }
 
 :root {
-    --color-primario: #6C3483;
-    --color-secundario: #2980B9;
-    --color-x: #E74C3C;
-    --color-o: #3498DB;
-    --color-empate: #95A5A6;
-    --color-fondo: #1a1a2e;
-    --color-fondo-card: #16213e;
-    --color-texto: #ECF0F1;
-    --color-texto-secundario: #BDC3C7;
-    --color-borde: #34495E;
-    --color-activo: rgba(46, 204, 113, 0.3);
-    --color-ganado: rgba(155, 89, 182, 0.3);
-    --sombra: 0 4px 6px rgba(0, 0, 0, 0.3);
-    --radio-borde: 12px;
+    --color-primario: #4a90e2;
+    --color-secundario: #357abd;
+    --color-x: #dc3545;
+    --color-o: #4a90e2;
+    --color-empate: #6c757d;
+    --color-fondo: #000000;
+    --color-fondo-card: #1a1a1a;
+    --color-texto: #ffffff;
+    --color-texto-secundario: #b0b0b0;
+    --color-borde: #333333;
+    --color-activo: rgba(74, 144, 226, 0.3);
+    --color-ganado: rgba(74, 144, 226, 0.2);
+    --sombra: 0 5px 15px rgba(74, 144, 226, 0.5);
+    --radio-borde: 10px;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--color-fondo) 0%, #0f3460 100%);
+    background-color: var(--color-fondo);
     min-height: 100vh;
     color: var(--color-texto);
     padding: 20px;
@@ -105,15 +105,15 @@ h2 {
     font-size: 1.1em;
     border: 2px solid var(--color-borde);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #2a2a2a;
     color: var(--color-texto);
     transition: all 0.3s;
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: var(--color-secundario);
-    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--color-primario);
+    background: #333333;
 }
 
 .input-group input::placeholder {
@@ -149,28 +149,30 @@ h2 {
 }
 
 .btn-iniciar {
-    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    background-color: var(--color-primario);
     color: white;
-    border: none;
+    border: 2px solid var(--color-secundario);
     padding: 18px 30px;
     font-size: 1.2em;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
     margin-top: 10px;
+    font-weight: 600;
 }
 
 .btn-iniciar:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(108, 52, 131, 0.4);
+    box-shadow: var(--sombra);
+    background-color: var(--color-secundario);
 }
 
 .btn-secundario {
     display: block;
     text-align: center;
     background: transparent;
-    border: 2px solid var(--color-secundario);
-    color: var(--color-secundario);
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario);
     padding: 12px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -179,8 +181,10 @@ h2 {
 }
 
 .btn-secundario:hover {
-    background: var(--color-secundario);
+    background: var(--color-primario);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
 }
 
 .reglas {
@@ -209,7 +213,7 @@ h2 {
 }
 
 .reglas li::before {
-    content: '🐱';
+    content: '•';
     position: absolute;
     left: 0;
 }
@@ -284,7 +288,7 @@ h2 {
 .gato-pequeno.activo {
     opacity: 1;
     box-shadow: 0 0 15px var(--color-activo);
-    background: rgba(46, 204, 113, 0.1);
+    background: var(--color-activo);
 }
 
 .gato-pequeno.ganado {
@@ -359,6 +363,7 @@ h2 {
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .btn-reiniciar, .btn-nueva, .btn-historial {
@@ -368,28 +373,30 @@ h2 {
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
-    border: none;
+    font-weight: 600;
 }
 
 .btn-reiniciar {
-    background: var(--color-primario);
+    background: #dc3545;
     color: white;
+    border: 2px solid #bd2130;
 }
 
 .btn-nueva {
-    background: var(--color-secundario);
+    background: var(--color-primario);
     color: white;
+    border: 2px solid var(--color-secundario);
 }
 
 .btn-historial {
-    background: transparent;
-    border: 2px solid var(--color-texto-secundario);
-    color: var(--color-texto-secundario);
+    background: #333333;
+    border: 2px solid #444444;
+    color: white;
 }
 
 .btn-reiniciar:hover, .btn-nueva:hover, .btn-historial:hover {
     transform: translateY(-2px);
-    opacity: 0.9;
+    box-shadow: var(--sombra);
 }
 
 /* ==================== MODAL ==================== */
@@ -452,17 +459,20 @@ h2 {
 
 .btn-volver {
     display: inline-block;
-    background: var(--color-secundario);
+    background: var(--color-primario);
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
     margin-bottom: 25px;
     transition: all 0.3s;
+    border: 2px solid var(--color-secundario);
 }
 
 .btn-volver:hover {
     transform: translateY(-2px);
+    box-shadow: var(--sombra);
+    background-color: var(--color-secundario);
 }
 
 .seccion {
@@ -533,15 +543,15 @@ h2 {
 }
 
 .tabla-ranking .victorias {
-    color: #2ECC71;
+    color: #28a745;
 }
 
 .tabla-ranking .derrotas {
-    color: #E74C3C;
+    color: #dc3545;
 }
 
 .tabla-ranking .empates {
-    color: #F39C12;
+    color: #ffc107;
 }
 
 /* Lista de partidas */
@@ -577,7 +587,7 @@ h2 {
 
 .partida-jugadores .jugador-nombre.ganador {
     font-weight: bold;
-    color: #2ECC71;
+    color: #28a745;
 }
 
 .partida-jugadores .vs {
@@ -597,13 +607,13 @@ h2 {
 }
 
 .partida-resultado .victoria {
-    background: rgba(46, 204, 113, 0.2);
-    color: #2ECC71;
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
 }
 
 .partida-resultado .empate {
-    background: rgba(243, 156, 18, 0.2);
-    color: #F39C12;
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
 }
 
 .partida-fecha {

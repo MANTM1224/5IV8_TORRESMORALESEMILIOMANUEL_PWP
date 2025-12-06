@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container juego-container">
-        <h1>🐱 Gato de Gatos 🐱</h1>
+        <h1>Gato de Gatos</h1>
         
         <!-- Info de jugadores -->
         <div class="info-jugadores">
@@ -48,9 +48,9 @@
 
         <!-- Controles -->
         <div class="controles">
-            <button onclick="reiniciarJuego()" class="btn-reiniciar">🔄 Reiniciar Partida</button>
-            <a href="/" class="btn-nueva">🏠 Nueva Partida</a>
-            <a href="/historial" class="btn-historial">📊 Historial</a>
+            <button onclick="reiniciarJuego()" class="btn-reiniciar">Reiniciar Partida</button>
+            <a href="/" class="btn-nueva">Nueva Partida</a>
+            <a href="/historial" class="btn-historial">Historial</a>
         </div>
     </div>
 
@@ -60,8 +60,8 @@
             <h2 id="modal-titulo">¡Juego Terminado!</h2>
             <p id="modal-mensaje"></p>
             <div class="modal-botones">
-                <button onclick="reiniciarJuego()" class="btn-reiniciar">🔄 Jugar de Nuevo</button>
-                <a href="/" class="btn-nueva">🏠 Nueva Partida</a>
+                <button onclick="reiniciarJuego()" class="btn-reiniciar">Jugar de Nuevo</button>
+                <a href="/" class="btn-nueva">Nueva Partida</a>
             </div>
         </div>
     </div>
@@ -273,14 +273,14 @@
             let esEmpate = false;
             
             if (ganador === null) {
-                titulo.textContent = '🤝 ¡Empate!';
-                mensaje.textContent = '¡La partida ha terminado en empate!';
+                titulo.textContent = 'Empate';
+                mensaje.textContent = 'La partida ha terminado en empate';
                 esEmpate = true;
             } else {
                 const nombreGanador = ganador === 'X' ? jugador1Nombre : jugador2Nombre;
                 ganadorId = ganador === 'X' ? jugador1Id : jugador2Id;
-                titulo.textContent = `🎉 ¡${nombreGanador} Gana!`;
-                mensaje.textContent = `¡Felicidades ${nombreGanador}! Has ganado el Gato de Gatos.`;
+                titulo.textContent = `${nombreGanador} Gana`;
+                mensaje.textContent = `Felicidades ${nombreGanador}, has ganado el Gato de Gatos.`;
             }
             
             modal.classList.add('visible');
