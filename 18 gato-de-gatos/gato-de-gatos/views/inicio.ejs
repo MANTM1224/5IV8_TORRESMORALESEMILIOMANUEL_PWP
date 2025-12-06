@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Inicio</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container inicio-container">
+        <h1>🐱 Gato de Gatos 🐱</h1>
+        <p class="subtitulo">Ultimate Tic-Tac-Toe</p>
+        
+        <div class="card">
+            <h2>Nueva Partida</h2>
+            <p class="descripcion">Ingresa los nombres de los dos jugadores para comenzar</p>
+            
+            <form action="/iniciar-partida" method="POST" class="form-jugadores">
+                <div class="input-group">
+                    <label for="jugador1">
+                        <span class="simbolo x">X</span> Jugador 1
+                    </label>
+                    <input type="text" id="jugador1" name="jugador1" 
+                           placeholder="Nombre del jugador 1" required maxlength="50">
+                </div>
+                
+                <div class="vs">VS</div>
+                
+                <div class="input-group">
+                    <label for="jugador2">
+                        <span class="simbolo o">O</span> Jugador 2
+                    </label>
+                    <input type="text" id="jugador2" name="jugador2" 
+                           placeholder="Nombre del jugador 2" required maxlength="50">
+                </div>
+                
+                <button type="submit" class="btn-iniciar">
+                    🎮 Iniciar Partida
+                </button>
+            </form>
+        </div>
+        
+        <a href="/historial" class="btn-secundario">📊 Ver Historial de Puntuaciones</a>
+        
+        <div class="reglas">
+            <h3>📖 Reglas del Juego</h3>
+            <ul>
+                <li>El tablero tiene <strong>9 gatos pequeños</strong> organizados en una cuadrícula 3x3</li>
+                <li>Cada gato pequeño es un tablero de gato normal (3x3)</li>
+                <li>Para ganar un gato pequeño, haz 3 en línea dentro de él</li>
+                <li>Para ganar la partida, gana <strong>3 gatos pequeños en línea</strong></li>
+                <li>Tu jugada determina en qué gato puede jugar tu oponente</li>
+                <li>Si el gato destino ya está ganado o lleno, el oponente puede jugar en cualquier gato</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

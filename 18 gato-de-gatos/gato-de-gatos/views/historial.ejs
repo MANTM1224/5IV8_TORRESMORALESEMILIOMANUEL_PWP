@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Historial</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container historial-container">
+        <h1>🐱 Gato de Gatos 🐱</h1>
+        <h2>📊 Historial de Puntuaciones</h2>
+        
+        <a href="/" class="btn-volver">🏠 Volver al Inicio</a>
+
+        <!-- Tabla de Rankings -->
+        <div class="seccion">
+            <h3>🏆 Ranking de Jugadores</h3>
+            <% if (jugadores.length === 0) { %>
+                <p class="sin-datos">No hay jugadores registrados aún.</p>
+            <% } else { %>
+                <div class="tabla-container">
+                    <table class="tabla-ranking">
+                        <thead>
+                            <tr>
+                                <th>Posición</th>
+                                <th>Jugador</th>
+                                <th>Victorias</th>
+                                <th>Derrotas</th>
+                                <th>Empates</th>
+                                <th>Partidas</th>
+                                <th>% Victoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% jugadores.forEach((jugador, index) => { %>
+                                <% 
+                                    const totalPartidas = jugador.victorias + jugador.derrotas + jugador.empates;
+                                    const porcentaje = totalPartidas > 0 ? ((jugador.victorias / totalPartidas) * 100).toFixed(1) : 0;
+                                    let medalla = '';
+                                    if (index === 0) medalla = '🥇';
+                                    else if (index === 1) medalla = '🥈';
+                                    else if (index === 2) medalla = '🥉';
+                                %>
+                                <tr class="<%= index < 3 ? 'top-' + (index + 1) : '' %>">
+                                    <td><%= medalla %> <%= index + 1 %></td>
+                                    <td class="nombre-jugador"><%= jugador.nombre %></td>
+                                    <td class="victorias"><%= jugador.victorias %></td>
+                                    <td class="derrotas"><%= jugador.derrotas %></td>
+                                    <td class="empates"><%= jugador.empates %></td>
+                                    <td><%= totalPartidas %></td>
+                                    <td><%= porcentaje %>%</td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Historial de Partidas -->
+        <div class="seccion">
+            <h3>📜 Últimas Partidas</h3>
+            <% if (partidas.length === 0) { %>
+                <p class="sin-datos">No hay partidas registradas aún.</p>
+            <% } else { %>
+                <div class="lista-partidas">
+                    <% partidas.forEach(partida => { %>
+                        <div class="partida-item">
+                            <div class="partida-jugadores">
+                                <span class="jugador-nombre <%= partida.ganador_id === partida.jugador1_id ? 'ganador' : '' %>">
+                                    <span class="simbolo x">X</span>
+                                    <%= partida.jugador1_nombre %>
+                                </span>
+                                <span class="vs">vs</span>
+                                <span class="jugador-nombre <%= partida.ganador_id === partida.jugador2_id ? 'ganador' : '' %>">
+                                    <%= partida.jugador2_nombre %>
+                                    <span class="simbolo o">O</span>
+                                </span>
+                            </div>
+                            <div class="partida-resultado">
+                                <% if (partida.empate) { %>
+                                    <span class="resultado empate">🤝 Empate</span>
+                                <% } else { %>
+                                    <span class="resultado victoria">🏆 <%= partida.ganador_nombre %></span>
+                                <% } %>
+                            </div>
+                            <div class="partida-fecha">
+                                <%= new Date(partida.fecha_partida).toLocaleDateString('es-MX', { 
+                                    year: 'numeric', 
+                                    month: 'short', 
+                                    day: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                }) %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

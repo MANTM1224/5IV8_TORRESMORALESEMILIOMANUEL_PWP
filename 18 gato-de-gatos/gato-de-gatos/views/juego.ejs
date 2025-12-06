@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato de Gatos - Juego</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container juego-container">
+        <h1>🐱 Gato de Gatos 🐱</h1>
+        
+        <!-- Info de jugadores -->
+        <div class="info-jugadores">
+            <div class="jugador jugador1 activo" id="info-j1">
+                <span class="simbolo x">X</span>
+                <span class="nombre"><%= jugador1Nombre %></span>
+            </div>
+            <div class="turno-indicator" id="turno-text">Turno de X</div>
+            <div class="jugador jugador2" id="info-j2">
+                <span class="simbolo o">O</span>
+                <span class="nombre"><%= jugador2Nombre %></span>
+            </div>
+        </div>
+
+        <!-- Tablero principal (Gato de Gatos) -->
+        <div class="tablero-principal" id="tablero-principal">
+            <% for(let bigRow = 0; bigRow < 3; bigRow++) { %>
+                <% for(let bigCol = 0; bigCol < 3; bigCol++) { %>
+                    <% const gatoId = bigRow * 3 + bigCol; %>
+                    <div class="gato-pequeno" id="gato-<%= gatoId %>" data-gato="<%= gatoId %>">
+                        <div class="gato-ganador" id="ganador-<%= gatoId %>"></div>
+                        <% for(let smallRow = 0; smallRow < 3; smallRow++) { %>
+                            <% for(let smallCol = 0; smallCol < 3; smallCol++) { %>
+                                <% const celdaId = smallRow * 3 + smallCol; %>
+                                <div class="celda" 
+                                     id="celda-<%= gatoId %>-<%= celdaId %>" 
+                                     data-gato="<%= gatoId %>" 
+                                     data-celda="<%= celdaId %>"
+                                     onclick="hacerJugada(<%= gatoId %>, <%= celdaId %>)">
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+
+        <!-- Controles -->
+        <div class="controles">
+            <button onclick="reiniciarJuego()" class="btn-reiniciar">🔄 Reiniciar Partida</button>
+            <a href="/" class="btn-nueva">🏠 Nueva Partida</a>
+            <a href="/historial" class="btn-historial">📊 Historial</a>
+        </div>
+    </div>
+
+    <!-- Modal de fin de juego -->
+    <div class="modal" id="modal-fin">
+        <div class="modal-content">
+            <h2 id="modal-titulo">¡Juego Terminado!</h2>
+            <p id="modal-mensaje"></p>
+            <div class="modal-botones">
+                <button onclick="reiniciarJuego()" class="btn-reiniciar">🔄 Jugar de Nuevo</button>
+                <a href="/" class="btn-nueva">🏠 Nueva Partida</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los jugadores desde el servidor
+        const jugador1Id = <%= jugador1Id %>;
+        const jugador2Id = <%= jugador2Id %>;
+        const jugador1Nombre = "<%= jugador1Nombre %>";
+        const jugador2Nombre = "<%= jugador2Nombre %>";
+
+        // Estado del juego
+        let turnoActual = 'X'; // X siempre empieza
+        let gatoActivo = null; // null significa que puede jugar en cualquier gato
+        let juegoTerminado = false;
+        
+        // Estado de cada gato pequeño (9 gatos, cada uno con 9 celdas)
+        let estadoGatos = Array(9).fill(null).map(() => Array(9).fill(null));
+        
+        // Ganador de cada gato pequeño
+        let ganadoresGatos = Array(9).fill(null);
+
+        // Combinaciones ganadoras
+        const combinacionesGanadoras = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
+            [0, 4, 8], [2, 4, 6]  // Diagonales
+        ];
+
+        // Inicializar juego
+        function inicializarJuego() {
+            actualizarTablero();
+            actualizarTurno();
+        }
+
+        // Hacer una jugada
+        function hacerJugada(gatoId, celdaId) {
+            if (juegoTerminado) return;
+            
+            // Verificar si puede jugar en este gato
+            if (gatoActivo !== null && gatoActivo !== gatoId) {
+                return; // No puede jugar aquí
+            }
+            
+            // Verificar si el gato ya está ganado
+            if (ganadoresGatos[gatoId] !== null) {
+                return;
+            }
+            
+            // Verificar si la celda está vacía
+            if (estadoGatos[gatoId][celdaId] !== null) {
+                return;
+            }
+            
+            // Hacer la jugada
+            estadoGatos[gatoId][celdaId] = turnoActual;
+            
+            // Actualizar celda visual
+            const celda = document.getElementById(`celda-${gatoId}-${celdaId}`);
+            celda.textContent = turnoActual;
+            celda.classList.add(turnoActual.toLowerCase());
+            
+            // Verificar si ganó el gato pequeño
+            if (verificarGanadorGato(gatoId)) {
+                ganadoresGatos[gatoId] = turnoActual;
+                mostrarGanadorGato(gatoId, turnoActual);
+                
+                // Verificar si ganó el juego completo
+                if (verificarGanadorJuego()) {
+                    finalizarJuego(turnoActual);
+                    return;
+                }
+            } else if (gatoLleno(gatoId)) {
+                // El gato está lleno sin ganador (empate en ese gato)
+                ganadoresGatos[gatoId] = 'E'; // Empate
+                mostrarGanadorGato(gatoId, 'E');
+            }
+            
+            // Verificar empate total
+            if (verificarEmpateTotal()) {
+                finalizarJuego(null);
+                return;
+            }
+            
+            // Determinar el próximo gato activo
+            if (ganadoresGatos[celdaId] !== null) {
+                // Si el gato destino ya está decidido, puede jugar en cualquiera
+                gatoActivo = null;
+            } else {
+                gatoActivo = celdaId;
+            }
+            
+            // Cambiar turno
+            turnoActual = turnoActual === 'X' ? 'O' : 'X';
+            actualizarTurno();
+            actualizarGatosActivos();
+        }
+
+        // Verificar ganador de un gato pequeño
+        function verificarGanadorGato(gatoId) {
+            const estado = estadoGatos[gatoId];
+            return combinacionesGanadoras.some(combo => {
+                return estado[combo[0]] !== null &&
+                       estado[combo[0]] === estado[combo[1]] &&
+                       estado[combo[1]] === estado[combo[2]];
+            });
+        }
+
+        // Verificar si un gato está lleno
+        function gatoLleno(gatoId) {
+            return estadoGatos[gatoId].every(celda => celda !== null);
+        }
+
+        // Verificar ganador del juego completo
+        function verificarGanadorJuego() {
+            return combinacionesGanadoras.some(combo => {
+                return ganadoresGatos[combo[0]] !== null &&
+                       ganadoresGatos[combo[0]] !== 'E' &&
+                       ganadoresGatos[combo[0]] === ganadoresGatos[combo[1]] &&
+                       ganadoresGatos[combo[1]] === ganadoresGatos[combo[2]];
+            });
+        }
+
+        // Verificar empate total
+        function verificarEmpateTotal() {
+            // Si todos los gatos están decididos y no hay ganador
+            return ganadoresGatos.every(g => g !== null) && !verificarGanadorJuego();
+        }
+
+        // Mostrar ganador de un gato pequeño
+        function mostrarGanadorGato(gatoId, ganador) {
+            const gatoDiv = document.getElementById(`gato-${gatoId}`);
+            const ganadorDiv = document.getElementById(`ganador-${gatoId}`);
+            
+            gatoDiv.classList.add('ganado');
+            ganadorDiv.textContent = ganador === 'E' ? '=' : ganador;
+            ganadorDiv.classList.add('visible', ganador === 'E' ? 'empate' : ganador.toLowerCase());
+        }
+
+        // Actualizar indicadores de turno
+        function actualizarTurno() {
+            const infoJ1 = document.getElementById('info-j1');
+            const infoJ2 = document.getElementById('info-j2');
+            const turnoText = document.getElementById('turno-text');
+            
+            if (turnoActual === 'X') {
+                infoJ1.classList.add('activo');
+                infoJ2.classList.remove('activo');
+                turnoText.textContent = `Turno de ${jugador1Nombre}`;
+            } else {
+                infoJ1.classList.remove('activo');
+                infoJ2.classList.add('activo');
+                turnoText.textContent = `Turno de ${jugador2Nombre}`;
+            }
+        }
+
+        // Actualizar qué gatos están activos
+        function actualizarGatosActivos() {
+            // Remover clase activo de todos los gatos
+            document.querySelectorAll('.gato-pequeno').forEach(gato => {
+                gato.classList.remove('activo');
+            });
+            
+            if (gatoActivo === null) {
+                // Todos los gatos no ganados están activos
+                document.querySelectorAll('.gato-pequeno:not(.ganado)').forEach(gato => {
+                    gato.classList.add('activo');
+                });
+            } else {
+                // Solo el gato destino está activo
+                const gato = document.getElementById(`gato-${gatoActivo}`);
+                if (!gato.classList.contains('ganado')) {
+                    gato.classList.add('activo');
+                } else {
+                    // Si el gato destino ya está ganado, todos están activos
+                    document.querySelectorAll('.gato-pequeno:not(.ganado)').forEach(g => {
+                        g.classList.add('activo');
+                    });
+                    gatoActivo = null;
+                }
+            }
+        }
+
+        // Actualizar tablero visual
+        function actualizarTablero() {
+            for (let gatoId = 0; gatoId < 9; gatoId++) {
+                for (let celdaId = 0; celdaId < 9; celdaId++) {
+                    const celda = document.getElementById(`celda-${gatoId}-${celdaId}`);
+                    const valor = estadoGatos[gatoId][celdaId];
+                    celda.textContent = valor || '';
+                    celda.classList.remove('x', 'o');
+                    if (valor) {
+                        celda.classList.add(valor.toLowerCase());
+                    }
+                }
+            }
+            actualizarGatosActivos();
+        }
+
+        // Finalizar juego
+        function finalizarJuego(ganador) {
+            juegoTerminado = true;
+            
+            const modal = document.getElementById('modal-fin');
+            const titulo = document.getElementById('modal-titulo');
+            const mensaje = document.getElementById('modal-mensaje');
+            
+            let ganadorId = null;
+            let esEmpate = false;
+            
+            if (ganador === null) {
+                titulo.textContent = '🤝 ¡Empate!';
+                mensaje.textContent = '¡La partida ha terminado en empate!';
+                esEmpate = true;
+            } else {
+                const nombreGanador = ganador === 'X' ? jugador1Nombre : jugador2Nombre;
+                ganadorId = ganador === 'X' ? jugador1Id : jugador2Id;
+                titulo.textContent = `🎉 ¡${nombreGanador} Gana!`;
+                mensaje.textContent = `¡Felicidades ${nombreGanador}! Has ganado el Gato de Gatos.`;
+            }
+            
+            modal.classList.add('visible');
+            
+            // Guardar resultado en la base de datos
+            guardarResultado(ganadorId, esEmpate);
+        }
+
+        // Guardar resultado en la base de datos
+        function guardarResultado(ganadorId, esEmpate) {
+            fetch('/guardar-resultado', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    jugador1Id: jugador1Id,
+                    jugador2Id: jugador2Id,
+                    ganadorId: ganadorId,
+                    empate: esEmpate
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Resultado guardado:', data);
+            })
+            .catch(error => {
+                console.error('Error al guardar resultado:', error);
+            });
+        }
+
+        // Reiniciar juego
+        function reiniciarJuego() {
+            // Resetear estado
+            turnoActual = 'X';
+            gatoActivo = null;
+            juegoTerminado = false;
+            estadoGatos = Array(9).fill(null).map(() => Array(9).fill(null));
+            ganadoresGatos = Array(9).fill(null);
+            
+            // Resetear visual
+            document.querySelectorAll('.celda').forEach(celda => {
+                celda.textContent = '';
+                celda.classList.remove('x', 'o');
+            });
+            
+            document.querySelectorAll('.gato-pequeno').forEach(gato => {
+                gato.classList.remove('ganado');
+            });
+            
+            document.querySelectorAll('.gato-ganador').forEach(ganador => {
+                ganador.textContent = '';
+                ganador.classList.remove('visible', 'x', 'o', 'empate');
+            });
+            
+            document.getElementById('modal-fin').classList.remove('visible');
+            
+            actualizarTurno();
+            actualizarGatosActivos();
+        }
+
+        // Inicializar al cargar
+        inicializarJuego();
+    </script>
+</body>
+</html>
